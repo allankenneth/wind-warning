@@ -20,7 +20,7 @@ if($gust[1]) {
 }
 
 if($gustspeed > 10) {
-	
+
 	$message = <<<EOT
 	Speed: $speed, Gust Speed: $gustspeed, Direction: $direction
 	EOT;
@@ -41,11 +41,11 @@ if($gustspeed > 10) {
 			'Name' => "Allan"
 			]
 		],
-		'Subject' => "Wind Warning",
+		'Subject' => "Wind Warning: " . $message,
 		'TextPart' => $message
 		]
 	]
 	];
 	$response = $mj->post(Resources::$Email, ['body' => $body]);
-	$response->success() && var_dump($response->getData());
+	$response->success(); && var_dump($response->getData());
 } 

@@ -24,3 +24,27 @@ Speed: $speed, Gust Speed: $gustspeed, Direction: $direction
 EOT;
 
 
+require 'vendor/autoload.php';
+use \Mailjet\Resources;
+$mj = new \Mailjet\Client('8e8c62a673ee09fd0089d20f3ae1a443','2acee43d45b994dc02751814e6ded109',true,['version' => 'v3.1']);
+$body = [
+'Messages' => [
+	[
+	'From' => [
+		'Email' => "allankh@icloud.com",
+		'Name' => "Allan"
+	],
+	'To' => [
+		[
+		'Email' => "allankh@icloud.com",
+		'Name' => "Allan"
+		]
+	],
+	'Subject' => "Wind Warning",
+	'TextPart' => $message
+	]
+]
+];
+$response = $mj->post(Resources::$Email, ['body' => $body]);
+$response->success() && var_dump($response->getData());
+

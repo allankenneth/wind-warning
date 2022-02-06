@@ -24,12 +24,9 @@ $message = <<<EOT
 Speed: $speed, Gust Speed: $gustspeed, Direction: $direction
 EOT;
 
-echo $message;
+
 
 if($gustspeed > 10) {
-
-
-
 	require 'vendor/autoload.php';
 
 	use \Mailjet\Resources;
@@ -40,8 +37,8 @@ if($gustspeed > 10) {
 	'Messages' => [
 		[
 		'From' => [
-			'Email' => "allankh@icloud.com",
-			'Name' => "Allan"
+			'Email' => "hi@allankenneth.com",
+			'Name' => "Windy Warning 5000"
 		],
 		'To' => [
 			[
@@ -55,5 +52,6 @@ if($gustspeed > 10) {
 	]
 	];
 	$response = $mj->post(Resources::$Email, ['body' => $body]);
-	$response->success(); && var_dump($response->getData());
-} 
+	$response->success() && var_dump($response->getData());
+
+}
